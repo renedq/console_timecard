@@ -1,1 +1,2 @@
-# console_timecard
+# README
+https://www.railstutorial.org/book/toy_app
