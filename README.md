@@ -1,1 +1,1 @@
-# console_timecard
+Learning from https://www.railstutorial.org/book/beginning
