@@ -1,2 +1,1 @@
-# README
-https://www.railstutorial.org/book/toy_app
+Learning from https://www.railstutorial.org/book/beginning
