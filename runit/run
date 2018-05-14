@@ -1,0 +1,12 @@
+#!/bin/bash
+WD=$PWD
+RUBY_VERSION=`cat env/RUBY_VERSION`
+
+export PATH=/site/apps/ruby-$RUBY_VERSION/bin:/usr/bin:/bin:/usr/local/bin
+
+export RAILS_ENV=`cat env/RAILS_ENV`
+RUN_DIR=`cat env/RUN_DIR`
+RATEFOOD_PORT=`cat env/RATEFOOD_PORT`
+
+cd $RUN_DIR
+exec chpst -e $WD/env bundle exec rails server --binding 127.0.0.1 -p $RATEFOOD_PORT 2>&1

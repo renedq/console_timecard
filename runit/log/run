@@ -1,0 +1,3 @@
+#!/bin/bash
+mkdir -p /sitelogs/drw/ratefood
+exec svlogd /sitelogs/drw/ratefood

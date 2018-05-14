@@ -1,0 +1,4 @@
+# 30 MB logfiles
+s30000000
+# Don't delete old logfiles
+n0

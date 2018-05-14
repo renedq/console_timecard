@@ -1,0 +1,54 @@
+
+<div class='page-header'>
+  <h1>Create a New Vendor</h1>
+</div>
+
+<div class='well bs-component'>
+  <%= form_for(@vendor, url: admin_vendors_path, html: { class: 'form-horizontal', multipart: true}) do |f| %>
+    <% if @vendor.errors.any? %>
+    <fieldset>
+        <div class="alert" id="error_explanation">
+          <h2><%= pluralize(@vendor.errors.count, "error") %> prohibited this @vendor from being saved:</h2>
+
+          <ul>
+          <% @vendor.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class='form-group'>
+        <%= f.label :name, class: 'col-lg-2' %>
+        <div class='col-lg-10'>
+          <%= f.text_field :name, class: 'form-control', required: true %>
+        </div>
+      </div>
+
+      <div class='form-group'>
+        <%= f.label :location, class: 'col-lg-2' %>
+        <div class='col-lg-10'>
+          <%= f.select :location, [['Chicago','Chicago'],['Montreal','Montreal']] %>
+        </div>
+      </div>
+
+      <div class='form-group'>
+        <%= f.label :image, class: 'col-lg-2' %>
+        <div class='col-lg-10'>
+          <%= f.file_field :image, class: 'form-control' %>
+        </div>
+      </div>
+
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <fieldset>
+  <% end %>
+</div>
+
+<script type="application/javascript">
+$(document).ready( function() {
+    $('#vendor_name').focus().select();
+});
+</script>
+<%= link_to 'Back', admin_vendors_path %>

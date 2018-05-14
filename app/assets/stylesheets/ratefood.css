@@ -1,0 +1,140 @@
+/*  Naming standard: All ratefood-specific classes and IDs are all lower-case,
+ *  with words delimited by hyphens, and get a "ratefood-" prefix in order to
+ *  differentiate them from classes from other sources, e.g. Bootstrap.
+ */
+
+/* Override of Bootstrap values */
+mark,
+.mark {
+  padding: 0;
+  background-color: #ff9;
+}
+
+header.ratefood-page {
+    background-color: #005568;
+    border-bottom: 7px solid #95C94C;
+}
+
+#ratefood-branding {
+    background-color: #013743;
+    height: 15px;
+    box-sizing: content-box;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+#ratefood-branding img {
+    float: right;
+}
+
+#ratefood-credentials {
+    float: right;
+    padding-top: 10px;
+    color: #ffffff;
+    font-size: 12px;
+}
+
+.nav-item a {
+  background: #528995;
+}
+
+#ratefood-tabs {
+  float: left;
+  padding-top: 10px;
+  font-size: 15px;
+  color: #ffffee;
+  font-weight: bold;
+  margin: 0;
+  font-variant: small-caps;
+  padding-top: 4px;
+}
+
+
+#ratefood-right {
+  color: #ffffff;
+}
+
+#ratefood-page-title {
+    color: #ffffee;
+    text-shadow: 1px 2px 2px #333333;
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0;
+    font-variant: small-caps;
+    padding-top: 4px;
+}
+
+a {
+  color: #337ab7;
+  text-decoration: none;
+}
+
+.btn-primary {
+  color: #484848;
+  background-image: linear-gradient(#ccc, #eee 6%, #ccc);
+  border: 1px solid #ccc;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-image: linear-gradient(#ccc, #95C94C 6%, #009933);
+  border: 1px solid #009933;
+}
+
+#ratefood-notices a {
+  color: #fff;
+}
+
+.tt-username {
+    clear: both;
+}
+
+.tt-fullname {
+    float: right;
+}
+
+.tt-suggestion {
+  padding: 4px;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.tt-suggestion:hover {
+  cursor: pointer;
+  color: #fff;
+  background-color: #0097cf;
+}
+
+.tt-suggestion.tt-cursor {
+  color: #fff;
+  background-color: #0097cf;
+}
+
+.tt-suggestion p {
+  margin: 0;
+}
+
+.tt-cursor{
+    color:#f1b218;
+}
+
+.tt-menu {
+  width: 250px;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+     -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+          box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.alert {
+  font-weight: bold;
+  font-size: 20px;
+  color: red;
+}

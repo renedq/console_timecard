@@ -10,6 +10,17 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
+//= require jquery_ujs
 //= require rails-ujs
-//= require turbolinks
+//= require handlebars
 //= require_tree .
+//= require bootstrap-timepicker
+//= require bootstrap-datepicker/core
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.es.js
+
+$(document).ready(function(){
+  $("#timepicker").timepicker();
+  $("#timepicker-1").timepicker();
+  $("#timepicker-2").timepicker();
+})

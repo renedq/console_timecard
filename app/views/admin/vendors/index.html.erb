@@ -1,0 +1,26 @@
+
+<%= link_to 'New Vendor', new_admin_vendor_path, class: 'btn btn-primary' %>
+<%= link_to 'View Menus', '/admin/menus' , class: 'btn btn-primary' %>
+
+<div class='page-header'>
+  <h1>Vendors</h1>
+</div>
+
+<table class='table table-striped table-hover'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vendors.each do |vendor| %>
+      <tr>
+        <td><%= link_to vendor.name, admin_vendor_path(id: vendor.id) %></td>
+        <td><%= vendor.location %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>

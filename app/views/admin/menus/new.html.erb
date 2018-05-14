@@ -1,0 +1,60 @@
+
+<div class='page-header'>
+  <h1>Create a New Menu</h1>
+</div>
+
+<div class='well bs-component'>
+  <%= form_for(@menu, url: admin_menus_path, html: { class: 'form-horizontal', multipart: true}) do |f| %>
+    <% if @menu.errors.any? %>
+    <fieldset>
+        <div class="alert" id="error_explanation">
+          <h2><%= pluralize(@menu.errors.count, "error") %> prohibited this @menu from being saved:</h2>
+
+          <ul>
+          <% @menu.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class='form-group'>
+        <%= f.label :vendor, class: 'col-lg-2' %>
+        <div class='col-lg-10'>
+          <%= f.select :vendor, Vendor.dropdown, class: 'form-control', required: true %>
+        </div>
+      </div>
+
+      <div class='form-group'>
+        <%= f.label :menu_type, class: 'col-lg-2' %>
+        <div class='col-lg-10'>
+          <%= f.select :menu_type, [['Lunch','Lunch']] %>
+        </div>
+      </div>            
+
+      <div class='form-group'>
+        <%= f.label :menu_date, class: 'col-lg-2' %>
+        <div class='col-lg-10'>
+          <div class="input-group bootstrap-timepicker timepicker">
+            <input type="text" data-provide='datepicker', class='form-control', name='menu[menu_date]' >
+            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <div class='form-group'>
+        <%= f.label :details, class: 'col-lg-2' %>
+        <div class='col-lg-10'>
+          <div>Add (V) - Vegan, (VT) - Vegetarian, (GF) - Gluten Free, (N) - Contains Nuts</div>
+          <%= f.text_area :details, class: 'form-control', required: true %>
+        </div>
+      </div>
+
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <fieldset>
+  <% end %>
+</div>
+
+<%= link_to 'Back', admin_menus_path %>

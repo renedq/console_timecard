@@ -1,0 +1,28 @@
+<nav class="navbar navbar-default">
+  <header class="ratefood-page">
+    <div id="ratefood-branding">
+      <div class="container">
+        <%= image_tag('drw-logo.svg', width:'50', alt: "DRW Trading Group logo") %>
+      </div>
+    </div>
+    <div class="container clearfix">
+      <div id="credentials">
+        <% if @current_user.administrator? %>
+          Hello, <strong> <%= @current_user.first_name %> <%= link_to '(ADMIN)', '/admin' %> </strong>
+        <% else %>
+          Hello, <strong> <%= @current_user.first_name %> </strong>
+        <% end %>
+      </div>
+      <a href="/"><h1 id="ratefood-page-title">Rate Food</h1></a>
+    </div>
+    <div class="centered clearfix">
+      <div id="vendors-tabs">
+        <ul class="nav nav-pills">
+          <li class="nav-item">
+            <%= link_to 'Home', root_path, {:style=>'color:#FFFFFF;'}%>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+</nav>
