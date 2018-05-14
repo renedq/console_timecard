@@ -10,9 +10,9 @@ puts("Adding users...")
     first_name = Faker::Name.first_name
     last_name = Faker::Name.last_name
     User.create!(
-      unit: 1,j
+      unit_id: 1,
       first_name: first_name,
       last_name: last_name,
-      email_address: "#{first_name[0]}.#{last_name}.mil@mail.mil"
+      email_address: "#{first_name}.#{last_name}.mil@mail.mil".downcase
     )
   end
