@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 3) do
   create_table "timecards", force: :cascade do |t|
     t.integer "user_id"
     t.datetime "start_time"
-    t.datetime "end_tie"
+    t.datetime "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_timecards_on_user_id"

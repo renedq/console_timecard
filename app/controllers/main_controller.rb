@@ -3,10 +3,11 @@ require 'date'
 
 class MainController < ApplicationController
   def index
-    @menus = Menu.all 
+    binding.pry
+    @users = User.where(unit_id: 1)
   end
 
   def show
-    @menu = Menu.find(params[:id])
+    @users = User.where(unit_id: 1)
   end
 end
