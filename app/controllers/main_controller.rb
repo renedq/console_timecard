@@ -3,8 +3,10 @@ require 'date'
 
 class MainController < ApplicationController
   def index
-    binding.pry
-    @users = User.where(unit_id: 1)
+    @users = User.where(unit_id: 1).order(:last_name)
+
+    #Timecard.where(user_id: 1).order(start_time: :desc).first
+    #binding.pry
   end
 
   def show

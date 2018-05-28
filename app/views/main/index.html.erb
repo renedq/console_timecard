@@ -4,16 +4,28 @@
         <tr>
           <th><br></th>
           <th>Name</th>
-          <th><br></th>
+          <th>Total Hours<br></th>
         </tr>
       </thead>
 
       <tbody>
         <% @users.each do |user| %>
           <tr>
-            <td>Click</td>
+          <% if user.timecards.order(start_time: :desc).first.end_time != nil %>
+            <td>Punch In</td>
+          <% else %>
+            <td>Punch Out</td>
+          <% end %>
             <td><%= user.last_name + ", " + user.first_name %></td>
-            <td>Stuff</td>
+            <td><% 
+              total = 0
+              for ts in user.timecards
+                if ts.end_time
+                  total = total + (ts.end_time - ts.start_time)
+                end
+              end
+              %><%= (total/60/60).round(2) %>
+            </td>
           </tr>
         <% end %>
       </tbody>

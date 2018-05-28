@@ -15,7 +15,7 @@ puts("Adding users...")
     first_name = Faker::Name.first_name
     last_name = Faker::Name.last_name
     User.create!(
-      unit_id: i,
+      unit_id: i+1,
       first_name: first_name,
       last_name: last_name,
       email_address: "#{first_name}.#{last_name}.mil@mail.mil".downcase
@@ -23,11 +23,20 @@ puts("Adding users...")
   end
 end
 
-1.times do
-  day_of_timecard = Time.now()
+puts("Adding timecards...")
+1000.times do
+  day_of_timecard = Time.now() - (60 * 60 * 24 * rand(1..30))
   Timecard.create!(
     user_id:      rand(1..250),
-    start_date:   day_of_timecard - rand(10000..20000),
+    start_time:   day_of_timecard - rand(10000..20000),
     end_time:     day_of_timecard
+  )
+end
+
+5.times do | i |
+  day_of_timecard = Time.now() - (60 * 60 * 24 * rand(1..2))
+  Timecard.create!(
+    user_id:      i+1,
+    start_time:   day_of_timecard - rand(1000..2000)
   )
 end
