@@ -13,7 +13,6 @@ class MainController < ApplicationController
     end
 
     #Timecard.where(user_id: 1).order(start_time: :desc).first
-    #binding.pry
   end
 
   def show

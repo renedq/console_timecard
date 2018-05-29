@@ -17,7 +17,7 @@
           <% if user.timecards.order(start_time: :desc).first.end_time != nil %>
             <td>Punch In</td>
           <% else %>
-            <td>Punch Out</td>
+            <td><%= link_to 'Punch Out', timecards_finish_path(id: user.timecards.where(end_time: nil).first.id), data: { confirm: 'Yes?' }%></td>
           <% end %>
             <td><%= user.last_name + ", " + user.first_name %></td>
             <td><% 

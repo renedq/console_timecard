@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: 'main#index'
   resources :main, only: [:index, :show]
   get '/', to: 'main#index'
+  post '/timecards/finish' => 'timecards#finish', as: :timecards_finish
 
   namespace :admin do
     get '/', to: 'menus#index'
