@@ -4,58 +4,25 @@
         <tr>
           <th><br></th>
           <th>Name</th>
-          <th><%= @date.strftime("%B") %></th>
+          <th><%= DateTime.now.strftime("%B") %></th>
           <th>Quarter</th>
           <th>FY</th>
-          <th>Total Hours</th>
         </tr>
       </thead>
 
       <tbody>
-        <% @users.each do |user| %>
+        <% @users_data.each do |user| %>
           <tr>
-          <% if user.timecards.order(start_time: :desc).first.end_time != nil %>
-            <td>Punch In</td>
+            <% 
+            if user['user'].timecards.order(start_time: :desc).first.end_time != nil %>
+            <td><%= link_to 'Punch In', timecards_start_path(id: user['user']['id']), method: 'POST' %></td>
           <% else %>
-            <td><%= link_to 'Punch Out', timecards_finish_path(id: user.timecards.where(end_time: nil).first.id), data: { confirm: 'Yes?' }%></td>
+            <td><%= link_to 'Punch Out', timecards_finish_path(id: user['user'].timecards.where(end_time: nil).first.id), method: 'POST' %></td>
           <% end %>
-            <td><%= user.last_name + ", " + user.first_name %></td>
-            <td><% 
-              total = 0
-              for ts in user.timecards.where("end_time > ?", @current_month)
-                if ts.end_time
-                  total = total + (ts.end_time - ts.start_time)
-                end
-              end
-              %><%= (total/60/60).round(2) %>
-            </td>
-            <td><% 
-              total = 0
-              for ts in user.timecards.where("end_time > ?", @current_quarter)
-                if ts.end_time
-                  total = total + (ts.end_time - ts.start_time)
-                end
-              end
-              %><%= (total/60/60).round(2) %>
-            </td>
-            <td><% 
-              total = 0
-              for ts in user.timecards.where("end_time > ?", @fy)
-                if ts.end_time
-                  total = total + (ts.end_time - ts.start_time)
-                end
-              end
-              %><%= (total/60/60).round(2) %>
-            </td>
-            <td><% 
-              total = 0
-              for ts in user.timecards
-                if ts.end_time
-                  total = total + (ts.end_time - ts.start_time)
-                end
-              end
-              %><%= (total/60/60).round(2) %>
-            </td>
+            <td><%= user['user']['last_name'] + ", " + user['user']['first_name'] %></td>
+            <td><%= user['month'] %></td>
+            <td><%= user['quarter'] %></td>
+            <td><%= user['fy'] %></td>
           </tr>
         <% end %>
       </tbody>
