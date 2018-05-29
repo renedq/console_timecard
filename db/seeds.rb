@@ -24,8 +24,8 @@ puts("Adding users...")
 end
 
 puts("Adding timecards...")
-1000.times do
-  day_of_timecard = Time.now() - (60 * 60 * 24 * rand(1..30))
+3000.times do
+  day_of_timecard = Time.now() - (60 * 60 * 24 * rand(1..180))
   Timecard.create!(
     user_id:      rand(1..250),
     start_time:   day_of_timecard - rand(10000..20000),

@@ -4,7 +4,10 @@
         <tr>
           <th><br></th>
           <th>Name</th>
-          <th>Total Hours<br></th>
+          <th><%= @date.strftime("%B") %></th>
+          <th>Quarter</th>
+          <th>FY</th>
+          <th>Total Hours</th>
         </tr>
       </thead>
 
@@ -17,6 +20,33 @@
             <td>Punch Out</td>
           <% end %>
             <td><%= user.last_name + ", " + user.first_name %></td>
+            <td><% 
+              total = 0
+              for ts in user.timecards.where("end_time > ?", @current_month)
+                if ts.end_time
+                  total = total + (ts.end_time - ts.start_time)
+                end
+              end
+              %><%= (total/60/60).round(2) %>
+            </td>
+            <td><% 
+              total = 0
+              for ts in user.timecards.where("end_time > ?", @current_quarter)
+                if ts.end_time
+                  total = total + (ts.end_time - ts.start_time)
+                end
+              end
+              %><%= (total/60/60).round(2) %>
+            </td>
+            <td><% 
+              total = 0
+              for ts in user.timecards.where("end_time > ?", @fy)
+                if ts.end_time
+                  total = total + (ts.end_time - ts.start_time)
+                end
+              end
+              %><%= (total/60/60).round(2) %>
+            </td>
             <td><% 
               total = 0
               for ts in user.timecards
