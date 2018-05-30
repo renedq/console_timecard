@@ -8,11 +8,11 @@ class TimecardController < ApplicationController
 
   def start
     @timecard = Timecard.create({user_id: params[:id], start_time: Time.now()})
-    binding.pry
+    redirect_to main_index_path 
   end
 
   def finish
     Timecard.update(params[:id], {:end_time => Time.now})
-    #redirect_back(fallback_location: fallback_location)
+    redirect_to main_index_path 
   end
 end
