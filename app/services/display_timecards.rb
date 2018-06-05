@@ -13,7 +13,7 @@ class DisplayTimecards
     end
 
     quarter_total = 0
-    for ts in @user.timecards.where("end_time > ?", d - ((d.month % 3) -1).month)
+    for ts in @user.timecards.where("end_time > ?", d.beginning_of_quarter)
       if ts.end_time
         quarter_total += (ts.end_time - ts.start_time)
       end

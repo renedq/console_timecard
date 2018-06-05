@@ -1,7 +1,7 @@
 require 'pry'
 require 'date'
 
-class TimecardController < ApplicationController
+class TimecardsController < ApplicationController
   def index
     @timecards = Timecard.all
   end
