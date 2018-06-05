@@ -19,7 +19,7 @@
           <% else %>
             <td><%= link_to 'Punch Out', timecards_finish_path(id: user['user'].timecards.where(end_time: nil).first.id), method: 'POST' %></td>
           <% end %>
-            <td><%= user['user']['last_name'] + ", " + user['user']['first_name'] %></td>
+            <td><%= link_to user['user']['last_name'] + ", " + user['user']['first_name'], user_path(id: user['user']['id']), method: 'GET' %></td>
             <td><%= user['month'] %></td>
             <td><%= user['quarter'] %></td>
             <td><%= user['fy'] %></td>

@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @total = DisplayTimecards.new(@user).call 
     timecards = []
     for timecard in @user.timecards.order(start_time: :desc) do
       hours = 0
@@ -27,6 +28,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    binding.pass
     pass
   end
   

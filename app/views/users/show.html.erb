@@ -1,21 +1,35 @@
 <div class='page-header'>
   <h1><%= @user.first_name %> <%= @user.last_name %></h1>
-  <%= @user.email_address %>
+  <p><%= @user.email_address %></p>
+  <table valign=top width=50%>
+    <tr>
+      <th><%= Date.today.strftime("%B") %></th>
+      <th>Quarter</th>
+      <th>FY</th>
+    </tr>
+    <tr>
+      <td><%= @total['month'] %></td>
+      <td><%= @total['quarter'] %></td>
+      <td><%= @total['fy'] %></td>
+    </tr>
+  </table>
 </div>
 
 
 <div class='page-header'>
-    <h2>Timecards</h2>
+    <h2>All Timecards</h2>
     <table valign=top width=100%>
         <tr>
           <th><br></th>
-          <th>Start Date/Time</th>
+          <th>Date</th>
+          <th>Time</th>
           <th>Hours</th>
         </tr>
         <% @timecards.each do |timecard| %>
           <tr>
             <td>Edit</td>
-            <td><%= timecard[:start_time] %></td>
+            <td><%= timecard[:start_time].to_date %></td>
+            <td><%= timecard[:start_time].to_s(:time) %></td>
             <td><%= timecard[:hours] %></td>
           </tr>
         <% end %>
