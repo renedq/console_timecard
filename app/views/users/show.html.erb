@@ -1,0 +1,24 @@
+<div class='page-header'>
+  <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+  <%= @user.email_address %>
+</div>
+
+
+<div class='page-header'>
+    <h2>Timecards</h2>
+    <table valign=top width=100%>
+        <tr>
+          <th><br></th>
+          <th>Start Date/Time</th>
+          <th>Hours</th>
+        </tr>
+        <% @timecards.each do |timecard| %>
+          <tr>
+            <td>Edit</td>
+            <td><%= timecard[:start_time] %></td>
+            <td><%= timecard[:hours] %></td>
+          </tr>
+        <% end %>
+    </table>
+</div>
+  

@@ -1,0 +1,21 @@
+<div class='page-header'>
+    <table class='table table-striped table-hover'>
+      <thead>
+        <tr>
+          <th><br></th>
+          <th>Name</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><br></td>
+            <td><%= user['last_name'] + ", " + user['first_name'] %></td>
+            <td><%= user['email'] %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
