@@ -23,9 +23,11 @@ puts("Adding users...")
   end
 end
 
+binding.pry
+
 puts("Adding timecards...")
 3000.times do
-  day_of_timecard = Time.now() - (60 * 60 * 24 * rand(1..180))
+  day_of_timecard = Time.now.utc - (60 * 60 * 24 * rand(1..180))
   Timecard.create!(
     user_id:      rand(1..250),
     start_time:   day_of_timecard - rand(10000..20000),
@@ -34,7 +36,7 @@ puts("Adding timecards...")
 end
 
 5.times do | i |
-  day_of_timecard = Time.now() - (60 * 60 * 24 * rand(1..2))
+  day_of_timecard = Time.now.utc - (60 * 60 * 24 * rand(1..2))
   Timecard.create!(
     user_id:      i+1,
     start_time:   day_of_timecard - rand(1000..2000)

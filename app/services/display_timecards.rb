@@ -4,7 +4,7 @@ class DisplayTimecards
   end
 
   def call
-    d = DateTime.now
+    d = DateTime.now.utc
     mon_total = 0
     for ts in @user.timecards.where("end_time > ?", d.beginning_of_month)
       if ts.end_time

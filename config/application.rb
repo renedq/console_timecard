@@ -40,7 +40,7 @@ module DrwEvents
     # Don't generate system test files.
     config.generators.system_tests = nil
 
-    config.time_zone = 'Central Time (US & Canada)' # This is currently only being used in the Chicago office. We may need to change this in the future.
-    config.active_record.default_timezone = :local
+    config.time_zone = 'UTC' 
+    config.active_record.default_timezone = :utc
   end
 end
