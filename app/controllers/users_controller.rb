@@ -14,7 +14,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    binding.pry
     @total = DisplayTimecards.new(@user).call 
     timecards = []
     for timecard in @user.timecards.order(start_time: :desc) do
@@ -29,7 +28,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    binding.pass
+    binding.pry
     pass
   end
   

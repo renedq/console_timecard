@@ -1,6 +1,10 @@
 <div class='page-header'>
   <h1><%= @user.first_name %> <%= @user.last_name %></h1>
-  <p><%= @user.email_address %></p>
+  <p>
+    <% if @user.admin %>
+      <h4>Administrator</h4>
+    <% end %>
+    <%= @user.email_address %></p>
   <table valign=top width=50%>
     <tr>
       <th><%= Date.today.strftime("%B") %></th>
@@ -18,7 +22,7 @@
 
 <div class='page-header'>
     <h2>All Timecards</h2>
-    <table valign=top width=100%>
+    <table valign=top width=50%>
         <tr>
           <th><br></th>
           <th>Date</th>
@@ -27,7 +31,7 @@
         </tr>
         <% @timecards.each do |timecard| %>
           <tr>
-            <td>Edit</td>
+	    <td>Edit <%= timecard[:id] %></td>
             <td><%= timecard[:start_time].to_date %></td>
             <td><%= timecard[:start_time].to_s(:time) %></td>
             <td><%= timecard[:hours] %></td>

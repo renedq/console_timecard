@@ -2,6 +2,8 @@ require 'pry'
 require 'date'
 
 class TimecardsController < ApplicationController
+  before_action :set_timecard, only: [:show, :edit]
+
   def index
     @timecards = Timecard.all
   end
@@ -17,8 +19,14 @@ class TimecardsController < ApplicationController
     t.update_column(:end_time, t.start_time + (params[:hours]).hours)
   end
 
+  def edit
+    binding.pry
+  end
+
   def delete
-    Timecard.destroy(params[:id])
+    @timecard.destroy
+    binding.pry
+    #Timecard.destroy(params[:id])
   end
 
   def start
@@ -31,5 +39,9 @@ class TimecardsController < ApplicationController
     #binding.pry
     Timecard.update(params[:id], {:end_time => Time.now})
     redirect_to main_index_path 
+  end
+
+  private def set_timecard
+    @timecard = Timecard.find(params[:id])
   end
 end
