@@ -17,22 +17,22 @@
         </div>
       <% end %>
 
-			<div class='form-group'>
-				<%= f.label :start_time, class: 'col-lg-2' %>
-				<div class='col-lg-10'>
-					<div class="input-group bootstrap-timepicker timepicker">
-							<input type="text" data-provide="datepicker" class="form-control" name="timecard[start_time]" value="<%= @timecard.start_time.strftime('%m/%d/%Y') %>">
-						<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-					</div>
-				</div>
-			</div>
-
-			<div class='form-group'>
-        <%= f.label :hours, class: 'col-lg-2' %>
+      <div class='form-group'>
+        <%= f.label :start_time, class: 'col-lg-2' %>
         <div class='col-lg-10'>
+          <div class="input-group bootstrap-timepicker timepicker">
+            <input type="text" data-provide="datepicker" class="form-control" name="timecard[start_time]" value="<%= @timecard.start_time.strftime('%m/%d/%Y') %>">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <div class='form-group'>
+        <%= f.label @hours, class: 'col-lg-2' %>
+          <div class='col-lg-10'>
           <%= f.text_field :hours, class: 'form-control', required: true %>
-       </div>
-			</div>
+        </div>
+      </div>
 
       <div class="actions">
         <%= f.submit %>
@@ -40,9 +40,3 @@
     <fieldset>
   <% end %>
 </div>
-
-<script type="application/javascript">
-$(document).ready( function() {
-    $('#timecard_name').focus().select();
-});
-</script>

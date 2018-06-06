@@ -2,7 +2,7 @@ require 'pry'
 require 'date'
 
 class TimecardsController < ApplicationController
-  before_action :set_timecard, only: [:show, :edit]
+  before_action :set_timecard, only: [:show, :update, :finish]
 
   def index
     @timecards = Timecard.all
@@ -10,16 +10,16 @@ class TimecardsController < ApplicationController
 
   def create
     binding.pry
-    Timecard.create({user_id: params[:user_id], start_time: params[:start_time], end_time: (params[:start_time] + (params[:hours]).hours) } )
+    Timecard.create({user_id: params[:user_id], start_time: params[:start_time], hours: params[:hours] } )
   end
 
   def update
     binding.pry
-    t = Timecard.find(params[:id])
-    t.update_column(:end_time, t.start_time + (params[:hours]).hours)
+    @timecard.update_column(:hours, params[:hours])
   end
 
   def edit
+    @timecard = Timecard.find(params[:id])
     binding.pry
   end
 
@@ -31,13 +31,13 @@ class TimecardsController < ApplicationController
 
   def start
     #binding.pry
-    @timecard = Timecard.create({user_id: params[:id], start_time: Time.now()})
+    @timecard = Timecard.create({user_id: params[:id], start_time: Time.now(), hours: 0 })
     redirect_to main_index_path 
   end
 
   def finish
-    #binding.pry
-    Timecard.update(params[:id], {:end_time => Time.now})
+    binding.pry
+    @timecard.update(hours: ((Time.now - @timecard.start_time)/1.hours).round(2))
     redirect_to main_index_path 
   end
 

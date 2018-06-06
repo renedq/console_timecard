@@ -16,12 +16,9 @@ class UsersController < ApplicationController
   def show
     @total = DisplayTimecards.new(@user).call 
     timecards = []
+    #TODO don't need this anymore
     for timecard in @user.timecards.order(start_time: :desc) do
-      hours = 0
-      if timecard.end_time
-        hours = ((timecard.end_time - timecard.start_time)/(60*60)).round(2)
-      end
-      record = {"start_time": timecard.start_time, "hours": hours, "id": timecard.id}
+      record = {"start_time": timecard.start_time, "hours": timecard.hours, "id": timecard.id}
       timecards.append(record)
     end
     @timecards = timecards
