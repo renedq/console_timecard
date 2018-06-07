@@ -8,7 +8,6 @@ class MainController < ApplicationController
     for user in @users
       @users_data.append(DisplayTimecards.new(user).call)
     end
-    binding.pry
   end
 
   def show

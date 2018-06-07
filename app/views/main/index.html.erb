@@ -14,10 +14,11 @@
         <% @users_data.each do |user| %>
           <tr>
             <% 
-            if user['user'].timecards.order(start_time: :desc).first.hours != nil %>
+            if user['user'].timecards.order(start_time: :desc).first.hours != 0 %>
             <td><%= link_to 'Punch In', timecards_start_path(id: user['user']['id']), method: 'POST' %></td>
           <% else %>
-            <td><%= link_to 'Punch Out', timecards_finish_path(id: user['user'].timecards.where(hours: nil).first.id), method: 'POST' %></td>
+            <% print(user['user']['id']) %>
+            <td><%= link_to 'Punch Out', timecards_finish_path(id: user['user'].timecards.where(hours: 0).first.id), method: 'POST' %></td>
           <% end %>
             <td><%= link_to user['user']['last_name'] + ", " + user['user']['first_name'], user_path(id: user['user']['id']), method: 'GET' %></td>
             <td><%= user['month'] %></td>
