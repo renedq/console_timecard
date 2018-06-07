@@ -5,7 +5,7 @@
 <div class='well bs-component'>
   <%= form_for(@timecard, url: timecard_path, method: :put, html: { class: 'form-horizontal', multipart: true}) do |f| %>
     <% if @timecard.errors.any? %>
-    <fieldset>
+    	<fieldset>
         <div id="error_explanation">
           <h2><%= pluralize(@timecard.errors.count, "error") %> prohibited this @timecard from being saved:</h2>
 
@@ -40,3 +40,9 @@
     <fieldset>
   <% end %>
 </div>
+<script type="application/javascript">
+$(document).ready( function() {
+    $('#timecard_hours').focus().select();
+});
+</script>
+

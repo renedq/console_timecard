@@ -31,7 +31,7 @@
         </tr>
         <% @timecards.each do |timecard| %>
           <tr>
-	    <td>Edit <%= timecard[:id] %></td>
+	    			<td><%= link_to 'Details', timecard_path(timecard[:id]) %></td>
             <td><%= timecard[:start_time].to_date %></td>
             <td><%= timecard[:start_time].to_s(:time) %></td>
             <td><%= timecard[:hours] %></td>
