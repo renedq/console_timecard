@@ -6,7 +6,7 @@ Unit.create name: "182 AW/Peoria, IL"
   Unit.create name: "#{rand(100..200)} AW/#{Faker::StarWars.planet}"
 end
 
-User.create unit_id: 1, first_name: "Rene", last_name: "Duquesnoy", email_address: "rene.p.duquesnoy.mil@mail.mil", admin: true
+User.create unit_id: 1, first_name: "Rene", last_name: "Duquesnoy", email_address: "rene.p.duquesnoy.mil@mail.mil", admin: true, super_admin: true
 
 
 puts("Adding users...")

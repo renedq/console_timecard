@@ -2,8 +2,9 @@ require 'pry'
 require 'date'
 
 class MainController < ApplicationController
+  before_action :set_unit, only: [:index, :show]
+
   def index
-    @users = User.where(unit_id: 1).order(:last_name)
     @users_data = []
     for user in @users
       @users_data.append(DisplayTimecards.new(user).call)
@@ -13,4 +14,8 @@ class MainController < ApplicationController
   def show
     @users = User.where(unit_id: 1)
   end
+	
+	private	def set_unit
+		@users = User.where(unit_id: params[:id]).order(:last_name)
+	end
 end
