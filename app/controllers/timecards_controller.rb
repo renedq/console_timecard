@@ -14,8 +14,8 @@ class TimecardsController < ApplicationController
   end
 
   def update
-		@timecard.update_column(:hours, params['timecard']['hours'])
-		render :show
+    @timecard.update_column(:hours, params['timecard']['hours'])
+    render :show
   end
 
   def edit
@@ -23,19 +23,19 @@ class TimecardsController < ApplicationController
   end
 
   def destroy
-		user_id=@timecard.user.id
-		@timecard.destroy
-		redirect_to user_path user_id
+    user_id=@timecard.user.id
+    @timecard.destroy
+    redirect_to user_path user_id
   end
 
   def start
     @timecard = Timecard.create({user_id: params[:id], start_time: Time.now(), hours: 0 })
-    redirect_to main_index_path 
+    redirect_to unit_index_path @timecard.unit.id 
   end
 
   def finish
     @timecard.update(hours: ((Time.now - @timecard.start_time)/1.hours).round(2))
-    redirect_to main_index_path 
+    redirect_to unit_index_path @timecard.unit.id 
   end
 
   private def set_timecard
