@@ -1,5 +1,5 @@
-/*  Naming standard: All ratefood-specific classes and IDs are all lower-case,
- *  with words delimited by hyphens, and get a "ratefood-" prefix in order to
+/*  Naming standard: All timecard-specific classes and IDs are all lower-case,
+ *  with words delimited by hyphens, and get a "timecard-" prefix in order to
  *  differentiate them from classes from other sources, e.g. Bootstrap.
  */
 
@@ -10,12 +10,12 @@ mark,
   background-color: #ff9;
 }
 
-header.ratefood-page {
+header.timecard-page {
     background-color: #005568;
     border-bottom: 7px solid #95C94C;
 }
 
-#ratefood-branding {
+#timecard-branding {
     background-color: #013743;
     height: 15px;
     box-sizing: content-box;
@@ -23,11 +23,11 @@ header.ratefood-page {
     padding-bottom: 4px;
 }
 
-#ratefood-branding img {
+#timecard-branding img {
     float: right;
 }
 
-#ratefood-credentials {
+#timecard-credentials {
     float: right;
     padding-top: 10px;
     color: #ffffff;
@@ -38,7 +38,7 @@ header.ratefood-page {
   background: #528995;
 }
 
-#ratefood-tabs {
+#timecard-tabs {
   float: left;
   padding-top: 10px;
   font-size: 15px;
@@ -50,14 +50,24 @@ header.ratefood-page {
 }
 
 
-#ratefood-right {
+#timecard-right {
   color: #ffffff;
 }
 
-#ratefood-page-title {
+#timecard-page-title {
     color: #ffffee;
     text-shadow: 1px 2px 2px #333333;
     font-size: 40px;
+    font-weight: bold;
+    margin: 0;
+    font-variant: small-caps;
+    padding-top: 4px;
+}
+
+#timecard-page-clock {
+    color: #ffffee;
+    text-shadow: 1px 2px 2px #333333;
+    font-size: 25px;
     font-weight: bold;
     margin: 0;
     font-variant: small-caps;
@@ -81,7 +91,7 @@ a {
   border: 1px solid #009933;
 }
 
-#ratefood-notices a {
+#timecard-notices a {
   color: #fff;
 }
 

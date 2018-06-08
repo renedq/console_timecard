@@ -1,12 +1,12 @@
 <nav class="navbar navbar-default">
-  <header class="ratefood-page">
+  <header class="timecard-page">
     <div class="container clearfix">
       <div id="credentials">
           Hello, <strong> <%= @current_user.first_name %> </strong>
       </div>
-      <a href="/"><h1 id="ratefood-page-title">Console Timecard</h1></a>
+      <a href="/"><h1 id="timecard-page-title">Console Timecard</h1></a>
       <div id="vendors-tabs">
-      	<h1 id='clock'>Clock</h3>
+				<h3 id="timecard-page-clock"><%= timepiece %> ZULU</h3>
       </div>
     </div>
   </header>

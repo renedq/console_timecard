@@ -24,6 +24,7 @@ gem "mini_magick"
 gem 'handlebars_assets'
 gem 'bootstrap-datepicker-rails'
 gem 'bootstrap-timepicker-rails-addon'
+gem 'timepiece'
 
 #gem 'people-ruby-client', source: 'http://gems/'
 
