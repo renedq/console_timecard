@@ -1,9 +1,9 @@
 require 'pry'
 
 puts("Adding units...")
-Unit.create name: "182 AW/Peoria, IL"
-10.times do | i |
-  Unit.create name: "#{rand(100..200)} AW/#{Faker::StarWars.planet}"
+Unit.create name: "182 AW - Peoria, IL"
+9.times do | i |
+  Unit.create name: "#{rand(100..200)} AW - #{Faker::Address.city}, #{Faker::Address.state_abbr}"
 end
 
 User.create unit_id: 1, first_name: "Rene", last_name: "Duquesnoy", email_address: "rene.p.duquesnoy.mil@mail.mil", admin: true, super_admin: true

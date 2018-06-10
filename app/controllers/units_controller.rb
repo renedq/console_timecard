@@ -1,30 +1,28 @@
 require 'pry'
-require 'date'
 
-class MainController < ApplicationController
-  before_action :set_unit, only: [:index, :show]
+class UnitsController < ApplicationController
+  before_action :set_unit, only: [:show]
 
   def index
-    binding.pry
-    @users_data = []
-    for user in @users
-      @users_data.append(DisplayTimecards.new(user).call)
-    end
+    @units = Unit.all.order(:name)
   end
 
   def show
-    @users = Unit.where(unit_id: 1)
+    @users_data = []
+    for user in @unit.users.order(:last_name)
+      @users_data.append(DisplayTimecards.new(user).call)
+    end
   end
 	
   def edit 
-    @users = Unit.where(unit_id: 1)
+    @unit = Unit.where(unit_id: 1)
   end
 	
   def new 
-    @users = Unit.where(unit_id: 1)
+    @unit = Unit.where(unit_id: 1)
   end
 	
   private def set_unit
-    @users = Unit.where(unit_id: params[:id]).order(:last_name)
+    @unit = Unit.where(id: params[:id]).first
   end
 end
