@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  #root to: 'units#index'
+  root to: 'units#index'
   resources :units, only: [:index, :show, :edit, :new]
   resources :users, only: [:index, :show, :edit, :new]
   resources :timecards #, only: [:show, :edit, :delete]

@@ -23,6 +23,7 @@ class TimecardsController < ApplicationController
   end
 
   def destroy
+    #TODO this doesn't do anything
     user_id=@timecard.user.id
     @timecard.destroy
     redirect_to user_path user_id
@@ -30,12 +31,12 @@ class TimecardsController < ApplicationController
 
   def start
     @timecard = Timecard.create({user_id: params[:id], start_time: Time.now(), hours: 0 })
-    redirect_to unit_index_path @timecard.unit.id 
+    redirect_to unit_path @timecard.user.unit.id 
   end
 
   def finish
     @timecard.update(hours: ((Time.now - @timecard.start_time)/1.hours).round(2))
-    redirect_to unit_index_path @timecard.unit.id 
+    redirect_to unit_path @timecard.user.unit.id 
   end
 
   private def set_timecard
