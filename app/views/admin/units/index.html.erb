@@ -1,0 +1,21 @@
+<div class='page-header'>
+    <table class='table table-striped table-hover' width=40%>
+      <thead>
+        <tr>
+					<th><br></th>
+          <th>Name</th>
+          <th>Members</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @units.each do |unit| %>
+          <tr>
+						<td><%= link_to 'Edit' %></td>
+            <td><%= link_to unit.name, unit_path(id: unit.id) %></td>
+            <td><%= unit.users.count %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>

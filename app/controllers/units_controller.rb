@@ -14,14 +14,6 @@ class UnitsController < ApplicationController
     end
   end
 	
-  def edit 
-    @unit = Unit.where(unit_id: 1)
-  end
-	
-  def new 
-    @unit = Unit.where(unit_id: 1)
-  end
-	
   private def set_unit
     @unit = Unit.where(id: params[:id]).first
   end

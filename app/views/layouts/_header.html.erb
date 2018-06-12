@@ -3,6 +3,11 @@
     <div class="container clearfix">
       <div id="credentials">
           Hello, <strong> <%= @current_user.first_name %> </strong>
+					<% if @current_user.super_admin? %>
+						<%= link_to "(Super Admin)", super_admin_path %>
+					<% elsif @current_user.admin? %>
+					  <%= link_to "(Admin)", admin_path %>
+					<% end %>	
       </div>
       <a href="/"><h1 id="timecard-page-title">Console Timecard</h1></a>
       <div id="vendors-tabs">

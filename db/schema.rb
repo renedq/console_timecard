@@ -23,7 +23,9 @@ ActiveRecord::Schema.define(version: 3) do
 
   create_table "units", force: :cascade do |t|
     t.string "name"
-    t.string "user_password"
+    t.string "city"
+    t.string "state"
+    t.string "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

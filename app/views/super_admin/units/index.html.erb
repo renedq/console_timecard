@@ -1,0 +1,28 @@
+<div class='page-header'>
+	<h2>Super Administrator</h2>
+  <%= link_to 'Add Unit', new_super_admin_unit_path, class: 'btn btn-primary' %>
+
+	<table class='table table-striped table-hover' width=40%>
+		<thead>
+			<tr>
+				<th><br></th>
+				<th>Name</th>
+				<th>City</th>
+				<th>State</th>
+				<th>Members</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @units.each do |unit| %>
+				<tr>
+					<td><%= link_to 'Edit', super_admin_unit_path(unit.id) %></td>
+					<td><%= link_to unit.name, super_admin_unit_path(unit.id) %></td>
+					<td><%= unit.city %></td>
+					<td><%= unit.state %></td>
+					<td><%= unit.users.count %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
