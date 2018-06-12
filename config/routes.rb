@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
 	namespace :super_admin do
 		get '/', to: 'units#index'
+		resources :users
 		resources :units
 	end
 end
