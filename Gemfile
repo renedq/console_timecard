@@ -25,6 +25,7 @@ gem 'handlebars_assets'
 gem 'bootstrap-datepicker-rails'
 gem 'bootstrap-timepicker-rails-addon'
 gem 'timepiece'
+gem 'devise'
 
 #gem 'people-ruby-client', source: 'http://gems/'
 

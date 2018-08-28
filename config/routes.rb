@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root to: 'units#index'
   resources :units, only: [:index, :show, :edit, :new]
   resources :users, only: [:index, :show, :edit, :new]
