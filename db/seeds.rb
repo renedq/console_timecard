@@ -6,7 +6,9 @@ Unit.create name: "182 AW", city: "Peoria", state:  "IL", phone_number: "309.633
   Unit.create name: "#{rand(100..200)} AW", city: Faker::Address.city, state: Faker::Address.state_abbr, phone_number: Faker::PhoneNumber.phone_number
 end
 
-User.create unit_id: 1, first_name: "Rene", last_name: "Duquesnoy", email: "rene.p.duquesnoy.mil@mail.mil", admin: true, super_admin: true, password: 'abcdef'
+binding.pry
+User.create! unit_id: 1, first_name: "Rene", last_name: "Duquesnoy", email: "rene.p.duquesnoy.mil@mail.mil", admin: true, super_admin: true, password: 'abcdef'
+User.create! unit_id: 1, first_name: "Tom", last_name: "Duquesnoy", email: "test@mail.mil", admin: false, super_admin: false, password: 'testtest'
 
 puts("Adding users...")
 10.times do | i |

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180703215755) do
+ActiveRecord::Schema.define(version: 20180828160453) do
 
   create_table "timecards", force: :cascade do |t|
     t.integer "user_id"
@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 20180703215755) do
     t.integer "unit_id"
     t.string "first_name"
     t.string "last_name"
-    t.string "email_address"
     t.boolean "active", default: true
     t.boolean "admin", default: false
     t.boolean "super_admin", default: false
