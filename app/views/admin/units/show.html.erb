@@ -1,9 +1,12 @@
+<div style="float: right;">
+  <%= link_to 'Add User', "", class: 'btn btn-primary' %>
+</div>
+
 <div class='page-header'>
   <h2><%= @unit.name %></h2> 
     <table class='table table-striped table-hover' width=60%>
       <thead>
         <tr>
-          <th><br></th>
           <th>Name</th>
           <th><%= DateTime.now.utc.strftime("%B") %></th>
           <th>Quarter</th>
@@ -14,13 +17,6 @@
       <tbody>
         <% @users_data.each do |user| %>
           <tr>
-            <% 
-            if user['user'].timecards.order(start_time: :desc).first.hours != 0 %>
-            <td><%= link_to 'Punch In', timecards_start_path(id: user['user']['id']), method: 'POST' %></td>
-          <% else %>
-            <% print(user['user']['id']) %>
-            <td><%= link_to 'Punch Out', timecards_finish_path(id: user['user'].timecards.where(hours: 0).first.id), method: 'POST' %></td>
-          <% end %>
             <td><%= link_to user['user']['last_name'] + ", " + user['user']['first_name'], user_path(id: user['user']['id']), method: 'GET' %></td>
             <td><%= user['month'] %></td>
             <td><%= user['quarter'] %></td>

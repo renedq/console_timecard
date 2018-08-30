@@ -9,14 +9,14 @@ Rails.application.routes.draw do
   post '/timecards/start'  => 'timecards#start', as: :timecards_start
   post '/timecards/finish' => 'timecards#finish', as: :timecards_finish
 
-	namespace :admin do
-		get '/', to: 'units#index'
-		resources :units
-	end
+  namespace :admin do
+    get '/', to: 'units#index'
+    resources :units
+  end
 
-	namespace :super_admin do
-		get '/', to: 'units#index'
-		resources :users
-		resources :units
-	end
+  namespace :super_admin do
+      get '/', to: 'units#index'
+      resources :users
+      resources :units
+  end
 end
