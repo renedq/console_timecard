@@ -28,7 +28,6 @@ class DisplayTimecards
 			b+=1.month
 		end
 		data['fy'] = year_total
-		binding.pry
 		data
   end
 end
