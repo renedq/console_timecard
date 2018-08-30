@@ -5,17 +5,17 @@
         <% if user_signed_in? %>
           Hello <strong><%= current_user.first_name %></strong>.
           <% if current_user.super_admin? %>
-                  <%= link_to "(Super Admin)", super_admin_path %>
-          <% elsif current_user.admin? %>
+            <%= link_to "(Super Admin)", super_admin_path %>
+					<% end %>
+          <% if current_user.admin? %>
             <%= link_to "(Admin)", admin_unit_path(current_user.unit_id) %>
           <% end %>	
-          <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
           <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
         <% end %>
       </div>
       <a href="/"><h1 id="timecard-page-title">Console Timecard</h1></a>
       <div id="vendors-tabs">
-	<h3 id="timecard-page-clock"><%= timepiece %> ZULU</h3>
+				<h3 id="timecard-page-clock"><%= timepiece %> ZULU</h3>
       </div>
     </div>
   </header>

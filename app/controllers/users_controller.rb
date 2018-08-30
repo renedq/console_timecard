@@ -4,15 +4,6 @@ require 'date'
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit]
 
-  def index
-    @users = User.all.order(last_name: :asc)
-  end
-
-  def new
-    binding.pry
-    @user = User.new
-  end
-
   def show
     @total = DisplayTimecards.new(@user).call 
     timecards = []
@@ -22,11 +13,6 @@ class UsersController < ApplicationController
       timecards.append(record)
     end
     @timecards = timecards
-  end
-
-  def edit
-    binding.pry
-    pass
   end
   
   private def set_user

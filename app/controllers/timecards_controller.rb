@@ -36,7 +36,12 @@ class TimecardsController < ApplicationController
   end
 
   def finish
-    @timecard.update(hours: ((Time.now - @timecard.start_time)/1.hours).round(2))
+		elapsed = Time.now - @timecard.start_time
+		if elapsed > 5
+    	@timecard.update(hours: ((Time.now - @timecard.start_time)/1.hours).round(2))
+		else
+			@timecard.destroy
+		end
     redirect_to unit_path @timecard.user.unit.id 
   end 
 
