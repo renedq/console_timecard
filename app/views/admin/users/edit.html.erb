@@ -1,0 +1,44 @@
+<%= link_to 'Back to Unit', admin_unit_path(@user.unit.id), class: 'btn btn-primary' %> 
+<div class='well bs-component'>
+  <%= form_for(@user, url: admin_user_path, method: :put, html: { class: 'form-horizontal', multipart: true}) do |f| %>
+    <% if @user.errors.any? %>
+    <fieldset>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this @user from being saved:</h2>
+
+          <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+			<div class='form-group'>
+        <%= f.label :email, class: 'col-lg-2' %>
+        <div class='col-lg-10'>
+          <%= f.text_field :email, class: 'form-control', required: true %>
+        </div>
+			</div>
+
+      <div class='form-group'>
+        <%= f.label :admin, "Unit Administrator?", class: 'col-lg-2' %>
+        <div class='col-lg-10'>
+          <%= f.check_box :admin, class: 'form-control' %>
+        </div>
+      </div>			
+
+      <div class='form-group'>
+        <%= f.label :active, class: 'col-lg-2' %>
+        <div class='col-lg-10'>
+          <%= f.check_box :active, class: 'form-control' %>
+        </div>
+      </div>			
+	
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <fieldset>
+  <% end %>
+</div>
+

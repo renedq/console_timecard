@@ -3,6 +3,7 @@ require 'date'
 
 module Admin
 	class UsersController < ApplicationController
+    before_action :verify_admin
 		before_action :set_user, only: [:show, :edit]
 
 		def index
@@ -26,12 +27,32 @@ module Admin
 		end
 
 		def edit
-			binding.pry
-			pass
+		end
+
+		def update
+			@user = User.find(params[:id])
+			@user.update(user_params)
+			redirect_to admin_user_path(id: @user.id), notice: "Update successful"
 		end
 		
+		def user_params
+			user_details = params.require(:user)
+			{
+				email: user_details['email'],
+				active: user_details['active'],
+				admin: user_details['admin']
+			}
+		end
+
 		private def set_user
 			@user = User.find(params[:id])
 		end
+
+    private def verify_admin
+      unless current_user.admin?
+        flash[:alert] = 'You do not have sufficient access to do that action'
+        redirect_to root_path
+      end
+    end
 	end
 end

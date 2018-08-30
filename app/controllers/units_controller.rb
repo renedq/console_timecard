@@ -13,7 +13,8 @@ class UnitsController < ApplicationController
 
   def show
     @users_data = []
-    for user in @unit.users.order(:last_name)
+		binding.pry
+    for user in @unit.users.where(active: true).order(:last_name)
       @users_data.append(DisplayTimecards.new(user).call)
     end
   end
