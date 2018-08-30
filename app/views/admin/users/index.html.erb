@@ -1,0 +1,19 @@
+<div class='page-header'>
+    <table class='table table-striped table-hover'>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= link_to user['last_name'] + ", " + user['first_name'], user_path(id: user['id']), method: 'GET' %></td>
+            <td><%= user['email'] %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>

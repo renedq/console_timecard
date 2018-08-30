@@ -7,7 +7,7 @@ Unit.create name: "182 AW", city: "Peoria", state:  "IL", phone_number: "309.633
 end
 
 User.create! unit_id: 1, first_name: "Rene", last_name: "Duquesnoy", email: "rene.p.duquesnoy.mil@mail.mil", admin: true, super_admin: true, password: 'abcdef'
-User.create! unit_id: 1, first_name: "Tom", last_name: "Duquesnoy", email: "test@mail.mil", admin: false, super_admin: false, password: 'testtest'
+User.create! unit_id: 1, first_name: "Tom", last_name: "Duquesnoy", email: "renedq@gmail.com", admin: false, super_admin: false, password: 'testtest'
 User.create! unit_id: 1, first_name: "Admin", last_name: "Duquesnoy", email: "admin@mail.mil", admin: true, super_admin: false, password: 'adminadmin'
 
 puts("Adding users...")
