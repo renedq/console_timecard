@@ -38,6 +38,8 @@ module Admin
 		def user_params
 			user_details = params.require(:user)
 			{
+				first_name: user_details['first_name'],
+				last_name: user_details['last_name'],
 				email: user_details['email'],
 				active: user_details['active'],
 				admin: user_details['admin']

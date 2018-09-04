@@ -46,7 +46,10 @@ module SuperAdmin
 		private def unit_params
 			d = params.require(:unit)
 			{
-				name: d['name']
+				name: d['name'],
+				city: d['city'],
+				state: d['state'],
+				phone_number: d['phone_number']
 			}
 		end
 
