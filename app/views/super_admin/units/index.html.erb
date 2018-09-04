@@ -16,8 +16,8 @@
 		<tbody>
 			<% @units.each do |unit| %>
 				<tr>
-					<td><%= link_to 'Edit', super_admin_unit_path(unit.id) %></td>
-					<td><%= link_to unit.name, super_admin_unit_path(unit.id) %></td>
+					<td><%= link_to 'Edit', edit_super_admin_unit_path(unit.id) %></td>
+					<td><%= unit.name %></td>
 					<td><%= unit.city %></td>
 					<td><%= unit.state %></td>
 					<td><%= unit.users.count %></td>

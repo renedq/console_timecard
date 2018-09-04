@@ -11,8 +11,22 @@ module Admin
 		end
 
 		def new
-			binding.pry
 			@user = User.new
+		end
+
+		def create
+			binding.pry
+			user_details = params.require(:user)
+			user = User.create!(
+				first_name: user_details['first_name'],
+				last_name: user_details['last_name'],
+				email: user_details['email'],
+				admin: user_details['admin'],
+				password: user_details['email'],
+				unit_id: params['unit_id']
+			)
+			binding.pry
+			redirect_to admin_unit_path(id: params['unit_id']), notice: 'User successfully created'
 		end
 
 		def show
@@ -31,7 +45,14 @@ module Admin
 
 		def update
 			@user = User.find(params[:id])
-			@user.update(user_params)
+			user_details = params.require(:user)
+			@user.update(
+				first_name: user_details['first_name'],
+				last_name: user_details['last_name'],
+				email: user_details['email'],
+				active: user_details['active'],
+				admin: user_details['admin']
+			)
 			redirect_to admin_user_path(id: @user.id), notice: "Update successful"
 		end
 		

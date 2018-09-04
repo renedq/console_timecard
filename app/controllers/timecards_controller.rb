@@ -14,7 +14,6 @@ class TimecardsController < ApplicationController
 
   def update
     @timecard.update_column(:hours, params['timecard']['hours'])
-		binding.pry
     redirect_to admin_user_path(id: @timecard.user_id)
   end
 
@@ -30,7 +29,7 @@ class TimecardsController < ApplicationController
   end
 
   def start
-    @timecard = Timecard.create({user_id: params[:id], start_time: Time.now(), hours: 0 })
+    @timecard = Timecard.create({user_id: params[:id], start_time: Time.now(), hours: 0, unit_id: params[:unit_id] })
     redirect_to unit_path @timecard.user.unit.id 
   end
 

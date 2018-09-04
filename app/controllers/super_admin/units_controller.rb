@@ -13,19 +13,11 @@ module SuperAdmin
 			@unit = Unit.new
 		end
 
-		def show
-
-		end
-		
-		def edit
-
-		end
-
 		def create
 			@unit = Unit.new(unit_params)
 
 			if @unit.save
-				redirect_to super_admin_unit_path(id: @unit.id), notice: 'Unit successfully created'
+				redirect_to super_admin_units_path, notice: 'Unit successfully created'
 			else
 				render :new
 			end
@@ -33,7 +25,7 @@ module SuperAdmin
 
 		def update
 			if @unit.update(unit_params)
-				redirect_to super_admin_unit_path(id: @unit.id), notice: 'Unit successfully updated'
+				redirect_to super_admin_units_path, notice: 'Unit successfully updated'
 			else
 				render :edit
 			end
