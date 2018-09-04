@@ -4,6 +4,14 @@ require 'date'
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit]
 
+  def index
+    @Users = User.where(unit_id: params['unit_id']).order(last_name: :asc)
+		respond_to do |format|
+			format.html
+			format.xlsx
+		end
+  end
+
   def show
     @total = DisplayTimecards.new(@user).call 
     timecards = []

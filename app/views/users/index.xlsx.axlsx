@@ -1,0 +1,11 @@
+wb = xlsx_package.workbook
+@Users.each do | user |
+	wb.add_worksheet(name: user.last_name + ", " + user.first_name) do | sheet |
+		total = 0
+		user.timecards.order(:start_time).each do | timecard |
+			sheet.add_row [timecard.start_time, timecard.hours]
+			total += timecard.hours
+		end
+		sheet.add_row ['total', total]
+	end
+end

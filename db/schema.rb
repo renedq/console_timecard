@@ -14,10 +14,12 @@ ActiveRecord::Schema.define(version: 20180828160453) do
 
   create_table "timecards", force: :cascade do |t|
     t.integer "user_id"
+    t.integer "unit_id"
     t.datetime "start_time"
     t.decimal "hours"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["unit_id"], name: "index_timecards_on_unit_id"
     t.index ["user_id"], name: "index_timecards_on_user_id"
   end
 

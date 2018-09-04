@@ -1,3 +1,7 @@
+<div style="float: right;">
+  <%= link_to 'Download as .xlsx', users_path(format: :xlsx, unit_id: params['id']), class: 'btn btn-primary' %>
+</div>
+
 <div class='page-header'>
   <h2><%= @unit.name %></h2> 
   <h4><%= @unit.city %>, <%= @unit.state %></h4> 
@@ -26,8 +30,7 @@
       <tbody>
         <% @users_data.each do |user| %>
           <tr>
-            <% 
-            if user['user'].timecards.order(start_time: :desc).first.hours != 0 %>
+            <% if user['user'].timecards.length == 0 or user['user'].timecards.order(start_time: :desc).first.hours != 0 %>
             <td><%= link_to 'Punch In', timecards_start_path(id: user['user']['id']), method: 'POST' %></td>
           <% else %>
             <% print(user['user']['id']) %>

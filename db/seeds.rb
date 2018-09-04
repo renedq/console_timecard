@@ -12,7 +12,7 @@ User.create! unit_id: 1, first_name: "Admin", last_name: "Duquesnoy", email: "ad
 
 puts("Adding users...")
 2.times do | i |
-  7.times do
+  10.times do
     first_name = Faker::Name.first_name
     last_name = Faker::Name.last_name
     User.create!(
@@ -28,8 +28,10 @@ end
 puts("Adding timecards...")
 300.times do
   day_of_timecard = Time.now.utc - (60 * 60 * 24 * rand(1..180))
+	user = User.find(rand(1..20))
   Timecard.create!(
-    user_id:      rand(1..14),
+    user_id:      user.id,
+		unit_id: 			user.unit_id,
     start_time:   day_of_timecard - rand(10000..20000),
     hours:        rand(1.01..8.99).round(2)
   )
@@ -40,6 +42,7 @@ end
   Timecard.create!(
     user_id:      i+1,
     start_time:   day_of_timecard - rand(1000..2000),
+		unit_id:			1,
     hours:        0 
   )
 end

@@ -5,7 +5,6 @@ class TimecardsController < ApplicationController
   before_action :set_timecard, only: [:show, :update, :finish, :destroy]
 
   def index
-    @timecards = Timecard.all
   end
 
   def create
