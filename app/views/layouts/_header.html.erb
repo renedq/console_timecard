@@ -9,6 +9,7 @@
           <% elsif current_user.admin? %>
             <%= link_to "(Admin)", admin_unit_path(current_user.unit_id) %>
           <% end %>	
+          <%= link_to "Edit", edit_user_registration_path, method: :get, :class => 'navbar-link'  %>
           <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
         <% end %>
       </div>
