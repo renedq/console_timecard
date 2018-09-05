@@ -1,25 +1,21 @@
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # http://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-
-uat:
-  <<: *default
-  database: drw_events_uat
-
 development:
-  adapter: sqlite3
-  database: db/development.sqlite3
+  adapter: postgresql 
+  database: db/console_timecard_development
+  pool: 5
+  timeout: 5000
+#  adapter: sqlite3
+#  database: db/development.sqlite3
 
 test:
-  adapter: sqlite3
-  database: db/test.sqlite3
+  adapter: postgresql 
+  database: db/console_timecard_test
+  pool: 5
+  timeout: 5000
+#  adapter: sqlite3
+#  database: db/test.sqlite3
 
 production:
-  <<: *default
-  host: 127.0.0.1  #  Force Postgres to use network-based socket authentication, rather than peer
-  database: drw_events_production
-  username: drw_events_production
-  password: <%= ENV['DRW_EVENTS_DATABASE_PASSWORD'] %>
+  adapter: postgresql 
+  database: db/console_timecard_production
+  pool: 5
+  timeout: 5000

@@ -18,11 +18,8 @@ gem 'timepiece'
 gem 'devise'
 gem 'axlsx_rails'
 
-group :development, :test , :production do
-  gem 'sqlite3'
-end
-
 group :development, :test do
+  #gem 'sqlite3'
   gem 'pry'
   gem 'letter_opener'
   gem 'rspec-rails'

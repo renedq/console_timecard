@@ -12,9 +12,12 @@
 
 ActiveRecord::Schema.define(version: 20180828160453) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "timecards", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "unit_id"
+    t.bigint "user_id"
+    t.bigint "unit_id"
     t.datetime "start_time"
     t.decimal "hours"
     t.datetime "created_at", null: false
@@ -33,7 +36,7 @@ ActiveRecord::Schema.define(version: 20180828160453) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.integer "unit_id"
+    t.bigint "unit_id"
     t.string "first_name"
     t.string "last_name"
     t.boolean "active", default: true
