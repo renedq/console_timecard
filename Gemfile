@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+
 ruby '2.5.1'
 
 gem 'rails', '~> 5.1.4'
@@ -17,8 +18,11 @@ gem 'timepiece'
 gem 'devise'
 gem 'axlsx_rails'
 
-group :development, :test do
+group :development, :test , :production do
   gem 'sqlite3'
+end
+
+group :development, :test do
   gem 'pry'
   gem 'letter_opener'
   gem 'rspec-rails'
