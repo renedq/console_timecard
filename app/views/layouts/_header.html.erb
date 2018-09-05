@@ -5,9 +5,8 @@
         <% if user_signed_in? %>
           Hello <strong><%= current_user.first_name %></strong>.
           <% if current_user.super_admin? %>
-            <%= link_to "(Super Admin)", super_admin_path %>
-					<% end %>
-          <% if current_user.admin? %>
+            <%= link_to "(Admin)", admin_units_path %>
+          <% elsif current_user.admin? %>
             <%= link_to "(Admin)", admin_unit_path(current_user.unit_id) %>
           <% end %>	
           <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>

@@ -8,7 +8,6 @@ class TimecardsController < ApplicationController
   end
 
   def create
-    binding.pry
     Timecard.create({user_id: params[:user_id], start_time: params[:start_time], hours: params[:hours] } )
   end
 

@@ -3,7 +3,7 @@
 </div>
 
 <div class='well bs-component'>
-  <%= form_for(@unit, url: super_admin_units_path, html: { class: 'form-horizontal', multipart: true}) do |f| %>
+  <%= form_for(@unit, url: admin_units_path, html: { class: 'form-horizontal', multipart: true}) do |f| %>
     <% if @unit.errors.any? %>
     <fieldset>
         <div class="alert" id="error_explanation">
@@ -57,4 +57,3 @@ $(document).ready( function() {
     $('#unit_name').focus().select();
 });
 </script>
-<%= link_to 'Back', super_admin_units_path %>

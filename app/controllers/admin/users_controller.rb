@@ -15,7 +15,6 @@ module Admin
 		end
 
 		def create
-			binding.pry
 			user_details = params.require(:user)
 			user = User.create!(
 				first_name: user_details['first_name'],
@@ -25,7 +24,6 @@ module Admin
 				password: user_details['email'],
 				unit_id: params['unit_id']
 			)
-			binding.pry
 			redirect_to admin_unit_path(id: params['unit_id']), notice: 'User successfully created'
 		end
 
