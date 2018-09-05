@@ -2,29 +2,23 @@ require 'pry'
 
 module Admin
 	class UnitsController < ApplicationController
-		before_action :verify_super_admin
+		before_action :verify_admin
 		before_action :set_unit, only: [:show, :edit, :update]
 
 		def index
-			@units = Unit.all.order(:name)
+                  binding.pry
+                  @units = Unit.find(current_user.unit_id)
 		end
 
 		def show
-
+                  @users_data = []
+                  for user in @unit.users.order(:last_name)
+                    @users_data.append(DisplayTimecards.new(user).call)
+                  end
 		end
 		
 		def edit
 
-		end
-
-		def create
-			@unit = Unit.new(unit_params)
-
-			if @unit.save
-				redirect_to admin_unit_path(id: @unit.id), notice: 'Unit successfully created'
-			else
-				render :new
-			end
 		end
 
 		def update
@@ -36,7 +30,7 @@ module Admin
 		end
 
 		private def set_unit
-			@unit = Unit.find(id: params[:id])
+		  @unit = Unit.find(params[:id])
 		end
 
 		private def unit_params
@@ -46,12 +40,11 @@ module Admin
 			}
 		end
 
-		private def verify_super_admin
-			unless @current_user.super_admin?
-				flash[:alert] = 'You do not have sufficient access to do that action'
-				redirect_to root_path
-			end
-		end
-
-	end
+    private def verify_admin
+      unless current_user.admin?
+        flash[:alert] = 'You do not have sufficient access to do that action'
+        redirect_to root_path
+      end
+    end
+  end
 end

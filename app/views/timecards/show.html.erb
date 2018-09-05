@@ -1,8 +1,7 @@
-<%= link_to 'Edit Timecard', edit_timecard_path(@timecard.id), class: 'btn btn-primary' %> 
-<%= link_to 'Delete Timecard', timecard_path(@timecard.id), method: :delete, class: 'btn btn-primary' %> 
 <%= link_to 'Back to User', user_path(@timecard.user.id), class: 'btn btn-primary' %> 
 
 <div class='page-header'>
 	<h3>Start Date: <%= @timecard.start_time %></h3>
 	<h3>Hours: <%= @timecard.hours %></h3>
+<%= link_to 'Delete Timecard', timecard_path(@timecard.id), method: :delete, class: 'btn btn-primary' %> 
 </div>

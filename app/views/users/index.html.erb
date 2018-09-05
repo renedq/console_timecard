@@ -11,7 +11,7 @@
         <% @users.each do |user| %>
           <tr>
             <td><%= link_to user['last_name'] + ", " + user['first_name'], user_path(id: user['id']), method: 'GET' %></td>
-            <td><%= user['email_address'] %></td>
+            <td><%= user['email'] %></td>
           </tr>
         <% end %>
       </tbody>

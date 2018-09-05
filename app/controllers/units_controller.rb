@@ -4,12 +4,16 @@ class UnitsController < ApplicationController
   before_action :set_unit, only: [:show]
 
   def index
-    @units = Unit.all.order(:name)
+    if current_user.super_admin?
+      @units = Unit.all.order(:name)
+    else
+      redirect_to unit_path(current_user.unit_id)
+    end
   end
 
   def show
     @users_data = []
-    for user in @unit.users.order(:last_name)
+    for user in @unit.users.where(active: true).order(:last_name)
       @users_data.append(DisplayTimecards.new(user).call)
     end
   end

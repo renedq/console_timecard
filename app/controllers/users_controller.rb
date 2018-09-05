@@ -5,12 +5,11 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit]
 
   def index
-    @users = User.all.order(last_name: :asc)
-  end
-
-  def new
-    binding.pry
-    @user = User.new
+    @Users = User.where(unit_id: params['unit_id']).order(last_name: :asc)
+		respond_to do |format|
+			format.html
+			format.xlsx
+		end
   end
 
   def show
@@ -22,11 +21,6 @@ class UsersController < ApplicationController
       timecards.append(record)
     end
     @timecards = timecards
-  end
-
-  def edit
-    binding.pry
-    pass
   end
   
   private def set_user

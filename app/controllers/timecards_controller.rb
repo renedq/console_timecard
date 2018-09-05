@@ -5,7 +5,6 @@ class TimecardsController < ApplicationController
   before_action :set_timecard, only: [:show, :update, :finish, :destroy]
 
   def index
-    @timecards = Timecard.all
   end
 
   def create
@@ -15,7 +14,7 @@ class TimecardsController < ApplicationController
 
   def update
     @timecard.update_column(:hours, params['timecard']['hours'])
-    render :show
+    redirect_to admin_user_path(id: @timecard.user_id)
   end
 
   def edit
@@ -26,20 +25,25 @@ class TimecardsController < ApplicationController
     #TODO this doesn't do anything
     user_id=@timecard.user.id
     @timecard.destroy
-    redirect_to user_path user_id
+    redirect_to admin_user_path(id: @timecard.user_id)
   end
 
   def start
-    @timecard = Timecard.create({user_id: params[:id], start_time: Time.now(), hours: 0 })
+    @timecard = Timecard.create({user_id: params[:id], start_time: Time.now(), hours: 0, unit_id: params[:unit_id] })
     redirect_to unit_path @timecard.user.unit.id 
   end
 
   def finish
-    @timecard.update(hours: ((Time.now - @timecard.start_time)/1.hours).round(2))
+		elapsed = Time.now - @timecard.start_time
+		if elapsed > 5
+    	@timecard.update(hours: ((Time.now - @timecard.start_time)/1.hours).round(2))
+		else
+			@timecard.destroy
+		end
     redirect_to unit_path @timecard.user.unit.id 
-  end
+  end 
 
-  private def set_timecard
+	private def set_timecard
     @timecard = Timecard.find(params[:id])
   end
 end

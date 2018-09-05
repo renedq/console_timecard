@@ -13,19 +13,11 @@ module SuperAdmin
 			@unit = Unit.new
 		end
 
-		def show
-
-		end
-		
-		def edit
-
-		end
-
 		def create
 			@unit = Unit.new(unit_params)
 
 			if @unit.save
-				redirect_to super_admin_unit_path(id: @unit.id), notice: 'Unit successfully created'
+				redirect_to super_admin_units_path, notice: 'Unit successfully created'
 			else
 				render :new
 			end
@@ -33,7 +25,7 @@ module SuperAdmin
 
 		def update
 			if @unit.update(unit_params)
-				redirect_to super_admin_unit_path(id: @unit.id), notice: 'Unit successfully updated'
+				redirect_to super_admin_units_path, notice: 'Unit successfully updated'
 			else
 				render :edit
 			end
@@ -46,12 +38,15 @@ module SuperAdmin
 		private def unit_params
 			d = params.require(:unit)
 			{
-				name: d['name']
+				name: d['name'],
+				city: d['city'],
+				state: d['state'],
+				phone_number: d['phone_number']
 			}
 		end
 
 		private def verify_super_admin
-			unless @current_user.super_admin?
+			unless current_user.super_admin?
 				flash[:alert] = 'You do not have sufficient access to do that action'
 				redirect_to root_path
 			end
