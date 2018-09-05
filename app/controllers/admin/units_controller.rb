@@ -1,5 +1,3 @@
-require 'pry'
-
 module Admin
 	class UnitsController < ApplicationController
 		before_action :verify_admin

@@ -20,8 +20,6 @@ gem 'axlsx_rails'
 gem 'uglifier'
 
 group :development, :test do
-  #gem 'sqlite3'
-  gem 'pry'
   gem 'letter_opener'
   gem 'rspec-rails'
   gem 'database_cleaner'

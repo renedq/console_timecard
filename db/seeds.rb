@@ -1,5 +1,3 @@
-require 'pry'
-
 puts("Adding units...")
 Unit.create name: "182 AW", city: "Peoria", state:  "IL", phone_number: "309.633.5286"
 9.times do | i |
