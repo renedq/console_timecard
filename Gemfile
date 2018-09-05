@@ -17,6 +17,7 @@ gem 'bootstrap-timepicker-rails-addon'
 gem 'timepiece'
 gem 'devise'
 gem 'axlsx_rails'
+gem 'uglifier'
 
 group :development, :test do
   #gem 'sqlite3'
