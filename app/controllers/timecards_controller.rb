@@ -1,4 +1,5 @@
 require 'date'
+require 'pry'
 
 class TimecardsController < ApplicationController
   before_action :set_timecard, only: [:show, :update, :finish, :destroy]
@@ -27,17 +28,21 @@ class TimecardsController < ApplicationController
   end
 
   def start
-    @timecard = Timecard.create({user_id: params[:id], start_time: Time.now(), hours: 0, unit_id: params[:unit_id] })
-    redirect_to unit_path @timecard.user.unit.id 
+    user_id = params[:id]
+    unit_id = params[:unit_id]
+    if Timecard.where(user_id: user_id).where(hours: 0).empty? 
+      @timecard = Timecard.create({user_id: params[:id], start_time: Time.now(), hours: 0, unit_id: unit_id })
+    end
+    redirect_to unit_path unit_id 
   end
 
   def finish
-		elapsed = Time.now - @timecard.start_time
-		if elapsed > 5
-    	@timecard.update(hours: ((Time.now - @timecard.start_time)/1.hours).round(2))
-		else
-			@timecard.destroy
-		end
+    elapsed = Time.now - @timecard.start_time
+    if elapsed > 5
+      @timecard.update(hours: ((Time.now - @timecard.start_time)/1.hours).round(2))
+    else
+      @timecard.destroy
+    end
     redirect_to unit_path @timecard.user.unit.id 
   end 
 
