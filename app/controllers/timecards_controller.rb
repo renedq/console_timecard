@@ -1,10 +1,12 @@
 require 'date'
-require 'pry'
 
 class TimecardsController < ApplicationController
   before_action :set_timecard, only: [:show, :update, :finish, :destroy]
 
   def index
+  end
+
+  def new
   end
 
   def create
@@ -17,6 +19,10 @@ class TimecardsController < ApplicationController
   end
 
   def edit
+    @timecard = Timecard.find(params[:id])
+  end
+
+  def show 
     @timecard = Timecard.find(params[:id])
   end
 
