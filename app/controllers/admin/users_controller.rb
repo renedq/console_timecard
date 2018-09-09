@@ -2,7 +2,7 @@ require 'date'
 
 module Admin
 	class UsersController < ApplicationController
-    before_action :verify_admin
+                before_action :verify_admin
 		before_action :set_user, only: [:show, :edit]
 
 		def index

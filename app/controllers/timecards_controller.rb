@@ -7,10 +7,14 @@ class TimecardsController < ApplicationController
   end
 
   def new
+    @timecard = Timecard.new
   end
 
   def create
-    Timecard.create({user_id: params[:user_id], start_time: params[:start_time], hours: params[:hours] } )
+    user_id = params[:user_id]
+    unit_id = User.find(user_id)[:unit_id]
+    t = Timecard.create({user_id: user_id, start_time: Date.strptime(params[:timecard][:start_time], '%m/%d/%Y'), hours: params[:timecard][:hours], unit_id: unit_id } )
+    redirect_to admin_user_path(id: params[:user_id])
   end
 
   def update
@@ -27,7 +31,6 @@ class TimecardsController < ApplicationController
   end
 
   def destroy
-    #TODO this doesn't do anything
     user_id=@timecard.user.id
     @timecard.destroy
     redirect_to admin_user_path(id: @timecard.user_id)
