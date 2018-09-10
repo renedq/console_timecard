@@ -7,7 +7,7 @@
     <% if @timecard.errors.any? %>
     	<fieldset>
         <div id="error_explanation">
-          <h2><%= pluralize(@timecard.errors.count, "error") %> prohibited this @timecard from being saved:</h2>
+          <h2><%= pluralize(@timecard.errors.count, "error") %> prohibited this timecard from being saved:</h2>
 
           <ul>
           <% @timecard.errors.full_messages.each do |message| %>
@@ -18,11 +18,21 @@
       <% end %>
 
       <div class='form-group'>
-        <%= f.label :start_time, class: 'col-lg-2' %>
+        <%= f.label :start_date, "Date", class: 'col-lg-2' %>
         <div class='col-lg-10'>
           <div class="input-group bootstrap-timepicker timepicker">
-            <input type="text" data-provide="datepicker" class="form-control" name="timecard[start_time]" value="">
+            <input type="text" data-provide="datepicker" class="form-control" name="start_date" value="">
             <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+          </div>
+        </div>
+      </div>
+
+			<div class='form-group'>
+        <%= f.label :start_time, "Start Time (ZULU)", class: 'col-lg-2' %>
+        <div class='col-lg-10'>
+          <div class="input-group bootstrap-timepicker timepicker">
+            <input id="timepicker" type="text" class="form-control" name='start_time'>
+            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
           </div>
         </div>
       </div>
@@ -30,7 +40,7 @@
       <div class='form-group'>
         <%= f.label :hours, class: 'col-lg-2' %>
           <div class='col-lg-10'>
-          <%= f.text_field :hours, class: 'form-control', required: true %>
+						<%= f.text_field :hours, as: :integer,	class: 'form-control', required: true %>
         </div>
       </div>
       

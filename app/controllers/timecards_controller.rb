@@ -13,7 +13,8 @@ class TimecardsController < ApplicationController
   def create
     user_id = params[:user_id]
     unit_id = User.find(user_id)[:unit_id]
-    @timecard =  Timecard.new({user_id: user_id, start_time: Date.strptime(params[:timecard][:start_time], '%m/%d/%Y'), hours: params[:timecard][:hours], unit_id: unit_id } )
+		start_time = DateTime.strptime(params[:start_date] + " " + params[:start_time], '%m/%d/%Y %l:%M %p')
+    @timecard =  Timecard.new({user_id: user_id, start_time: start_time, hours: params[:timecard][:hours], unit_id: unit_id } )
     if @timecard.save
       redirect_to admin_user_path(id: params[:user_id])
     else
@@ -22,8 +23,12 @@ class TimecardsController < ApplicationController
   end
 
   def update
-    @timecard.update_column(:hours, params['timecard']['hours'])
-    redirect_to admin_user_path(id: @timecard.user_id)
+		@timecard = Timecard.find(params[:id])
+    if @timecard.update(hours: params['timecard']['hours'])
+			redirect_to admin_user_path(id: @timecard.user_id)
+		else
+			render :edit
+		end
   end
 
   def edit
