@@ -21,7 +21,7 @@
         <%= f.label :start_date, "Date", class: 'col-lg-2' %>
         <div class='col-lg-10'>
           <div class="input-group bootstrap-timepicker timepicker">
-            <input type="text" data-provide="datepicker" class="form-control" name="start_date" value="">
+            <input type="text" data-provide="datepicker" class="form-control" name="start_date">
             <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
           </div>
         </div>
@@ -44,7 +44,7 @@
         </div>
       </div>
       
-      <%= hidden_field_tag "user_id", params['id'] %>
+      <%= hidden_field_tag "user_id", @user_id %>
 
       <div class="actions">
         <%= f.submit %>

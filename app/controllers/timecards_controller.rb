@@ -7,17 +7,19 @@ class TimecardsController < ApplicationController
   end
 
   def new
+		@user_id = params[:id]
     @timecard = Timecard.new
   end
 
   def create
     user_id = params[:user_id]
     unit_id = User.find(user_id)[:unit_id]
-		start_time = DateTime.strptime(params[:start_date] + " " + params[:start_time], '%m/%d/%Y %l:%M %p')
+		start_time = create_start_time(params[:start_date], params[:start_time])
     @timecard =  Timecard.new({user_id: user_id, start_time: start_time, hours: params[:timecard][:hours], unit_id: unit_id } )
     if @timecard.save
-      redirect_to admin_user_path(id: params[:user_id])
+      redirect_to admin_user_path(id: params[:user_id]), notice: "Your timecard was created successfully"
     else
+			@user_id = user_id
       render :new
     end
   end
@@ -25,7 +27,7 @@ class TimecardsController < ApplicationController
   def update
 		@timecard = Timecard.find(params[:id])
     if @timecard.update(hours: params['timecard']['hours'])
-			redirect_to admin_user_path(id: @timecard.user_id)
+			redirect_to admin_user_path(id: @timecard.user_id), notice: "Your timecard was updated successfully"
 		else
 			render :edit
 		end
@@ -64,7 +66,17 @@ class TimecardsController < ApplicationController
     redirect_to unit_path @timecard.user.unit.id 
   end 
 
-	private def set_timecard
+	private 
+	
+	def set_timecard
     @timecard = Timecard.find(params[:id])
   end
+
+	def create_start_time(date, time)
+		begin
+			Time.strptime("#{date} #{time}", '%m/%d/%Y %I:%M %p')
+		rescue ArgumentError
+			nil
+		end
+	end
 end
