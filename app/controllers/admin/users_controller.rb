@@ -20,6 +20,7 @@ module Admin
 				last_name: user_details['last_name'],
 				email: user_details['email'],
 				admin: user_details['admin'],
+				super_admin: user_details['super_admin'],
 				password: user_details['email'],
 				unit_id: params['unit_id']
 			)
@@ -48,7 +49,8 @@ module Admin
 				last_name: user_details['last_name'],
 				email: user_details['email'],
 				active: user_details['active'],
-				admin: user_details['admin']
+				admin: user_details['admin'],
+				super_admin: user_details['super_admin']
 			)
 			redirect_to admin_user_path(id: @user.id), notice: "Update successful"
 		end
@@ -60,7 +62,8 @@ module Admin
 				last_name: user_details['last_name'],
 				email: user_details['email'],
 				active: user_details['active'],
-				admin: user_details['admin']
+				admin: user_details['admin'],
+				super_admin: user_details['super_admin']
 			}
 		end
 
