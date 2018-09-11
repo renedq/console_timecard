@@ -14,7 +14,7 @@
         </div>
       <% end %>
 
-			<div class='form-group'>
+      <div class='form-group'>
         <%= f.label :first_name, class: 'col-lg-2' %>
         <div class='col-lg-10'>
           <%= f.text_field :first_name, class: 'form-control', required: true %>
@@ -41,6 +41,15 @@
           <%= f.check_box :admin, class: 'form-control' %>
         </div>
       </div>			
+
+      <% if current_user.super_admin %>
+        <div class='form-group'>
+          <%= f.label :super_admin, "Site Administrator?", class: 'col-lg-2' %>
+          <div class='col-lg-10'>
+            <%= f.check_box :super_admin, class: 'form-control' %>
+          </div>
+        </div>			
+      <% end %>
 
       <div class='form-group'>
         <%= f.label :active, class: 'col-lg-2' %>
