@@ -19,6 +19,8 @@ gem 'devise'
 gem 'axlsx_rails'
 gem 'uglifier'
 
+#to get rid of security vulnerabilies
+
 group :development, :test do
   gem 'letter_opener'
   gem 'rspec-rails'

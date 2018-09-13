@@ -1,3 +1,5 @@
+require 'pry' 
+
 class UnitsController < ApplicationController
   before_action :set_unit, only: [:show]
 

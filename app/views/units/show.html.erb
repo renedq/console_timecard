@@ -33,19 +33,19 @@
             <td><%= link_to 'Punch Out', timecards_finish_path(id: user['user'].timecards.where(hours: 0).first.id), method: 'POST' %></td>
           <% end %>
             <td><%= link_to user['user']['last_name'] + ", " + user['user']['first_name'], user_path(id: user['user']['id']), method: 'GET' %></td>
-						<td><%= user['oct'] %></td>
-						<td><%= user['nov'] %></td>
-						<td><%= user['dec'] %></td>
-						<td><%= user['jan'] %></td>
-						<td><%= user['feb'] %></td>
-						<td><%= user['mar'] %></td>
-						<td><%= user['apr'] %></td>
-						<td><%= user['may'] %></td>
-						<td><%= user['jun'] %></td>
-						<td><%= user['jul'] %></td>
-						<td><%= user['aug'] %></td>
-						<td><%= user['sep'] %></td>
-						<td><%= user['fy'] %></td>
+            <td><%= user['oct'] %></td>
+            <td><%= user['nov'] %></td>
+            <td><%= user['dec'] %></td>
+            <td><%= user['jan'] %></td>
+            <td><%= user['feb'] %></td>
+            <td><%= user['mar'] %></td>
+            <td><%= user['apr'] %></td>
+            <td><%= user['may'] %></td>
+            <td><%= user['jun'] %></td>
+            <td><%= user['jul'] %></td>
+            <td><%= user['aug'] %></td>
+            <td><%= user['sep'] %></td>
+            <td><%= user['fy'] %></td>
           </tr>
         <% end %>
       </tbody>

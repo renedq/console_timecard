@@ -11,8 +11,9 @@ mark,
 }
 
 header.timecard-page {
-    background-color: #005568;
-    border-bottom: 7px solid #95C94C;
+    /* background-color: #005568;*/
+    background-color: #00308F;
+    border-bottom: 7px solid #A6A6A8;
 }
 
 #timecard-branding {
@@ -35,7 +36,7 @@ header.timecard-page {
 }
 
 .nav-item a {
-  background: #528995;
+  background: #8f8f8c;
 }
 
 #timecard-tabs {
