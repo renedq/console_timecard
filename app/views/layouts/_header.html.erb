@@ -17,10 +17,12 @@
             </div>
           </td>
           <td align="right">
-            <% if Time.now.month <= 10 %>
-              <h3 id="timecard-page-clock">FY<%=Time.now.year - 1 %> Total: </h3>
-            <% else %>
-              <h3 id="timecard-page-clock">FY<%=Time.now.year %> Total: </h3>
+            <% if user_signed_in? %>
+              <% if Time.now.month <= 10 %>
+                <h3 id="timecard-page-clock">FY<%=Time.now.year - 1 %> Total: <%= DisplayTimecards.new(current_user).call['fy'] %> </h3>
+              <% else %>
+                <h3 id="timecard-page-clock">FY<%=Time.now.year %> Total: </h3>
+              <% end %>
             <% end %>
           </td>
         </tr>
@@ -47,7 +49,18 @@
               </li>
             <% end %>	
             <li class="nav-item", style="float: right;">
-              <%= link_to "Help", user_path(current_user.id), {:style=>'color:#FFFFFF;'} %> 
+              <!--<%= link_to "Help", "help.html", {:style=>'color:#FFFFFF;'} %>--> 
+            </li>
+          </ul>
+        </div>
+      </div>
+    <% else %>
+      <div class="container clearfix">
+        <div id="events-tabs">
+          <br>
+          <ul class="nav nav-pills">
+            <li class="nav-item", style="float: right;">
+            <!-- <%= link_to "Help", "help.html", {:style=>'color:#FFFFFF;'} %>--> 
             </li>
           </ul>
         </div>
