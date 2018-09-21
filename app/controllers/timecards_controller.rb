@@ -4,6 +4,19 @@ class TimecardsController < ApplicationController
   before_action :set_timecard, only: [:show, :update, :finish, :destroy]
 
   def index
+		@unit = Unit.find(current_user.unit_id)
+    @users_data = []
+		if not params[:FY].nil? 
+			@fy = Time.new(params[:FY])
+		else
+			@fy = Time.now
+			if @fy.month > 9
+				@fy += 1.year
+			end
+		end
+    for user in @unit.users.where(active: true).order(:last_name)
+      @users_data.append(DisplayTimecards.new(user, @fy).call)
+    end
   end
 
   def new
@@ -59,7 +72,7 @@ class TimecardsController < ApplicationController
   def finish
     if not Timecard.where(user_id: @timecard.user.id).where(hours: 0).empty? 
 			elapsed = Time.now - @timecard.start_time
-			if elapsed > 5
+			if elapsed > 18 
 				@timecard.update(hours: ((Time.now - @timecard.start_time)/1.hours).round(2))
 			else
 				@timecard.destroy

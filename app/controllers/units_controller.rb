@@ -1,3 +1,5 @@
+require 'pry'
+
 class UnitsController < ApplicationController
   before_action :set_unit, only: [:show]
 
@@ -11,9 +13,10 @@ class UnitsController < ApplicationController
 
   def show
     @users_data = []
-    for user in @unit.users.where(active: true).order(:last_name)
-      @users_data.append(DisplayTimecards.new(user).call)
-    end
+    @users = @unit.users.where(active: true).order(:last_name)
+    #for user in @unit.users.where(active: true).order(:last_name)
+      #@users_data.append(DisplayTimecards.new(user).call)
+    #end
   end
 	
   private def set_unit

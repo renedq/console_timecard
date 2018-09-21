@@ -18,10 +18,10 @@
           </td>
           <td align="right">
             <% if user_signed_in? %>
-              <% if Time.now.month <= 10 %>
-                <h3 id="timecard-page-clock">FY<%=Time.now.year - 1 %> Total: <%= DisplayTimecards.new(current_user).call['fy'] %> </h3>
+              <% if Time.now.month <= 9 %>
+                <h3 id="timecard-page-clock">FY<%=Time.now.year %> Total: <%= DisplayTimecards.new(current_user).call['fy'] %> </h3>
               <% else %>
-                <h3 id="timecard-page-clock">FY<%=Time.now.year %> Total: </h3>
+                <h3 id="timecard-page-clock">FY<%=Time.now.year + 1 %> Total: <%= DisplayTimecards.new(current_user).call['fy'] %> </h3>
               <% end %>
             <% end %>
           </td>

@@ -1,14 +1,11 @@
 class DisplayTimecards
-  def initialize(user)
+  def initialize(user, fy=Time.now)
     @user = user
+		@fy = fy
   end
 
   def call
-    d = DateTime.now.utc
-    fy = d.beginning_of_year - 3.month
-    if d.month > 9
-      fy += 1.year
-    end
+    fy = @fy.beginning_of_year - 3.month
 
     data = { "user" => @user }
     year_total=0

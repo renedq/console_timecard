@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :users
   end
 
+	#todo delete this?
   namespace :super_admin do
     get '/', to: 'units#index'
     resources :users
