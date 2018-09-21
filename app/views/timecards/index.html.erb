@@ -2,7 +2,15 @@
   <h2><%= @unit.name %></h2> 
   <h4><%= @unit.city %>, <%= @unit.state %></h4> 
   <h4><%= @unit.phone_number %></h4> 
-	<center><h2><%= link_to '<<', timecards_path(FY: (@fy - 1.year).year) %> <%= @fy.year %> <%= link_to '>>', timecards_path(FY: (@fy + 1.year).year) %></h2></center>
+  <center><h2>
+  <% if @earlier %>
+    <%= link_to '<<', timecards_path(FY: (@fy - 1.year).year) %> 
+  <% end %>
+  <%= @fy.year %> 
+  <% if @later %>
+    <%= link_to '>>', timecards_path(FY: (@fy + 1.year).year) %>
+  <% end %>
+  </h2></center>
 	
 	<table class='table table-striped table-hover' width=60%>
 		<thead>

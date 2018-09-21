@@ -4,16 +4,25 @@ class TimecardsController < ApplicationController
   before_action :set_timecard, only: [:show, :update, :finish, :destroy]
 
   def index
-		@unit = Unit.find(current_user.unit_id)
+    @unit = Unit.find(current_user.unit_id)
     @users_data = []
-		if not params[:FY].nil? 
-			@fy = Time.new(params[:FY])
-		else
-			@fy = Time.now
-			if @fy.month > 9
-				@fy += 1.year
-			end
-		end
+
+    if not params[:FY].nil? 
+      @fy = Time.new(params[:FY])
+    else
+      @fy = Time.now
+      if @fy.month > 9
+        @fy += 1.year
+      end
+    end
+    @earlier = false
+    @later = false
+    if Timecard.where("start_time < ?", @fy).size > 0
+      @earlier = true
+    end
+    if Timecard.where("start_time > ?", (@fy + 1.year - 1.day)).size > 0
+      @later = true
+    end
     for user in @unit.users.where(active: true).order(:last_name)
       @users_data.append(DisplayTimecards.new(user, @fy).call)
     end
