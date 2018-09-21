@@ -25,12 +25,16 @@ puts("Adding users...")
 end
 
 puts("Adding timecards...")
-300.times do
-  day_of_timecard = Time.now.utc - (60 * 60 * 24 * rand(1..180))
-	user = User.find(rand(1..20))
+day_of_timecard = Time.now.utc - 3.years
+loop do
+  if day_of_timecard > Time.now
+    break
+  end
+  day_of_timecard += rand(1..20).hours 
+  user = User.find(User.pluck(:id).sample)
   Timecard.create!(
     user_id:      user.id,
-		unit_id: 			user.unit_id,
+    unit_id:      user.unit.id,
     start_time:   day_of_timecard - rand(10000..20000),
     hours:        rand(1.01..8.99).round(2)
   )
@@ -41,7 +45,7 @@ end
   Timecard.create!(
     user_id:      i+1,
     start_time:   day_of_timecard - rand(1000..2000),
-		unit_id:			1,
+    unit_id:      1,
     hours:        0 
   )
 end
