@@ -25,7 +25,7 @@ puts("Adding users...")
 end
 
 puts("Adding timecards...")
-day_of_timecard = Time.now.utc - 3.years
+day_of_timecard = Time.now.utc - 3.months
 loop do
   if day_of_timecard > Time.now
     break

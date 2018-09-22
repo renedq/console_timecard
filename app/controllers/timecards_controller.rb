@@ -14,6 +14,7 @@ class TimecardsController < ApplicationController
       if @fy.month > 9
         @fy += 1.year
       end
+      @fy = @fy.beginning_of_year
     end
     @earlier = false
     @later = false
