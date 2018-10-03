@@ -15,12 +15,14 @@ class TimecardsController < ApplicationController
         @fy += 1.year
       end
     end
+		fy_filter = @fy.beginning_of_year - 3.months
     @earlier = false
     @later = false
-    if Timecard.where("start_time < ?", @fy).size > 0
+
+    if Timecard.where("start_time < ?", fy_filter).size > 0
       @earlier = true
     end
-    if Timecard.where("start_time > ?", (@fy + 1.year - 1.day)).size > 0
+    if Timecard.where("start_time > ?", (fy_filter + 1.year - 1.day)).size > 0
       @later = true
     end
     for user in @unit.users.where(active: true).order(:last_name)

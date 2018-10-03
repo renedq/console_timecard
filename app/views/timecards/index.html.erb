@@ -6,7 +6,7 @@
   <% if @earlier %>
     <%= link_to '<<', timecards_path(FY: (@fy - 1.year).year) %> 
   <% end %>
-  <%= @fy.year %> 
+  FY <%= @fy.year %> 
   <% if @later %>
     <%= link_to '>>', timecards_path(FY: (@fy + 1.year).year) %>
   <% end %>
