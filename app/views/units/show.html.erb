@@ -1,6 +1,6 @@
 <div class='page-header'>
 	<div style="float: right;">
-		<%= link_to 'View FY Totals', timecards_path, method: 'GET', class: 'btn btn-primary' %>
+		<%= link_to 'View FY Totals', timecards_path(id: params['id']), method: 'GET', class: 'btn btn-primary' %>
 	</div>
 	<div>
 		<h2><%= @unit.name %></h2> 

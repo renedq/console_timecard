@@ -4,7 +4,11 @@ class TimecardsController < ApplicationController
   before_action :set_timecard, only: [:show, :update, :finish, :destroy]
 
   def index
-    @unit = Unit.find(current_user.unit_id)
+		if params.has_key?(:unit_id)
+			@unit = Unit.find(:unit_id)
+		else
+    	@unit = Unit.find(current_user.unit_id)
+		end
     @users_data = []
 
     if not params[:FY].nil? 
