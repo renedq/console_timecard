@@ -6,8 +6,9 @@ User.create! unit_id: 1, first_name: "Rene", last_name: "Duquesnoy", email: "ren
 end
 User.create! unit_id: 1, first_name: "Tom", last_name: "Duquesnoy", email: "tomdq@gmail.com", admin: false, super_admin: false, password: 'testtest'
 User.create! unit_id: 1, first_name: "Admin", last_name: "Duquesnoy", email: "admin@mail.mil", admin: true, super_admin: false, password: 'adminadmin'
-User.create! unit_id: 1, first_name: "Sara", last_name: "Olson", email: "sara.j.olson11.mil@mail.mil", admin: true, super_admin: true, password: 'sara.j.olson11.mil@mail.mil'
-User.create! unit_id: 1, first_name: "Chris", last_name: "Morgan", email: "christorpher.morgan.17@us.af.mil", admin: true, super_admin: true, password: 'christorpher.morgan.17@us.af.mil'
+User.create! unit_id: 1, first_name: "Sara", last_name: "Olson", email: "sara.j.olson11.mil@mail.mil", admin: true, super_admin: false, password: 'sara.j.olson11.mil@mail.mil'
+User.create! unit_id: 1, first_name: "Chris", last_name: "Morgan", email: "christorpher.morgan.17@us.af.mil", admin: true, super_admin: false, password: 'christorpher.morgan.17@us.af.mil'
+User.create! unit_id: 1, first_name: "Sherry", last_name: "Fagan", email: "sherry.l.fagan2.mil@mail.mil", admin: true, super_admin: false, password: 'sherry.l.fagan2.mil@mail.mil'
 
 puts("Adding users...")
 2.times do | i |
