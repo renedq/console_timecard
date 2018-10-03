@@ -16,10 +16,12 @@ gem 'bootstrap-datepicker-rails'
 gem 'bootstrap-timepicker-rails-addon'
 gem 'timepiece'
 gem 'devise'
+gem 'axlsx', "~> 3.0.0.pre"
 gem 'axlsx_rails'
 gem 'uglifier'
 
 #to get rid of security vulnerabilies
+gem 'rubyzip', '~> 1.2.2'
 
 group :development, :test do
   gem 'letter_opener'
