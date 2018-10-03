@@ -5,7 +5,11 @@ class DisplayTimecards
   end
 
   def call
-    fy = @fy.beginning_of_year - 3.month
+		if @fy.month <= 9
+    	fy = @fy.beginning_of_year - 3.month
+		else
+    	fy = @fy.beginning_of_year + 9.month
+		end
 
     data = { "user" => @user }
     year_total=0

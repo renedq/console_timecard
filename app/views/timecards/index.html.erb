@@ -1,17 +1,17 @@
 <div class='page-header'>
 	<div style="float: right;">
-  	<%= link_to 'Download as .xlsx', users_path(format: :xlsx, unit_id: params['id']), class: 'btn btn-primary' %>
+  	<%= link_to 'Download as .xlsx', users_path(format: :xlsx, unit_id: params['unit_id']), class: 'btn btn-primary' %>
 	</div>
   <h2><%= @unit.name %></h2> 
   <h4><%= @unit.city %>, <%= @unit.state %></h4> 
   <h4><%= @unit.phone_number %></h4> 
   <center><h2>
   <% if @earlier %>
-    <%= link_to '<<', timecards_path(FY: (@fy - 1.year).year, id: params['id']) %> 
+    <%= link_to '<<', timecards_path(FY: (@fy - 1.year).year, unit_id: params['unit_id']) %> 
   <% end %>
   FY <%= @fy.year %> 
   <% if @later %>
-    <%= link_to '>>', timecards_path(FY: (@fy + 1.year).year, id: params['id']) %>
+    <%= link_to '>>', timecards_path(FY: (@fy + 1.year).year, unit_id: params['unit_id']) %>
   <% end %>
   </h2></center>
 	

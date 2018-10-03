@@ -5,7 +5,7 @@ class TimecardsController < ApplicationController
 
   def index
 		if params.has_key?(:unit_id)
-			@unit = Unit.find(:unit_id)
+			@unit = Unit.find(params[:unit_id])
 		else
     	@unit = Unit.find(current_user.unit_id)
 		end
@@ -30,7 +30,7 @@ class TimecardsController < ApplicationController
       @later = true
     end
     for user in @unit.users.where(active: true).order(:last_name)
-      @users_data.append(DisplayTimecards.new(user, @fy).call)
+      @users_data.append(DisplayTimecards.new(user, fy_filter).call)
     end
   end
 
